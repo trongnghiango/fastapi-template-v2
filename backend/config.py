@@ -5,11 +5,11 @@ from dynaconf import Dynaconf
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 settings = Dynaconf(
-    envvar_prefix="fastapi_template_v2",
+    envvar_prefix="backend",
     preload=[os.path.join(HERE, "default.toml")],
     settings_files=["settings.toml", ".secrets.toml"],
     environments=["development", "production", "testing"],
-    env_switcher="fastapi_template_v2_env",
+    env_switcher="backend_env",
     load_dotenv=False,
 )
 
@@ -18,7 +18,7 @@ settings = Dynaconf(
 # How to use this application settings
 
 ```
-from fastapi_template_v2.config import settings
+from backend.config import settings
 ```
 
 ## Acessing variables
@@ -45,15 +45,15 @@ KEY=value
 
 ### As environment variables
 ```
-export fastapi_template_v2_KEY=value
-export fastapi_template_v2_KEY="@int 42"
-export fastapi_template_v2_KEY="@jinja {{ this.db.uri }}"
-export fastapi_template_v2_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
+export backend_KEY=value
+export backend_KEY="@int 42"
+export backend_KEY="@jinja {{ this.db.uri }}"
+export backend_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
 ### Switching environments
 ```
-fastapi_template_v2_ENV=production fastapi_template_v2 run
+backend_ENV=production backend run
 ```
 
 Read more on https://dynaconf.com

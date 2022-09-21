@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Union, TYPE_CHECKING
 
 from fastapi import APIRouter, Request
 from fastapi.exceptions import HTTPException
@@ -6,7 +6,12 @@ from sqlmodel import Session, or_, select
 
 from ..db import ActiveSession
 from ..models.content import Content, ContentIncoming, ContentResponse
-from ..security import AuthenticatedUser, User, get_current_user
+
+if TYPE_CHECKING:
+    from backend.models.user import User
+
+# if TYPE_CHECKING:
+from backend.security import AuthenticatedUser, get_current_user
 
 router = APIRouter()
 
@@ -32,9 +37,7 @@ async def query_content(
     return content.first()
 
 
-@router.post(
-    "/", response_model=ContentResponse, dependencies=[AuthenticatedUser]
-)
+@router.post("/", response_model=ContentResponse, dependencies=[AuthenticatedUser])
 async def create_content(
     *,
     session: Session = ActiveSession,
@@ -71,9 +74,7 @@ async def update_content(
     # Check the user owns the content
     current_user: User = get_current_user(request=request)
     if content.user_id != current_user.id and not current_user.superuser:
-        raise HTTPException(
-            status_code=403, detail="You don't own this content"
-        )
+        raise HTTPException(status_code=403, detail="You don't own this content")
 
     # Update the content
     patch_data = patch.dict(exclude_unset=True)
@@ -97,9 +98,7 @@ def delete_content(
     # Check the user owns the content
     current_user = get_current_user(request=request)
     if content.user_id != current_user.id and not current_user.superuser:
-        raise HTTPException(
-            status_code=403, detail="You don't own this content"
-        )
+        raise HTTPException(status_code=403, detail="You don't own this content")
     session.delete(content)
     session.commit()
     return {"ok": True}

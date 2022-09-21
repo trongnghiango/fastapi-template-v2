@@ -8,11 +8,11 @@ from .db import create_db_and_tables, engine
 from .models.content import Content
 from .security import User
 
-cli = typer.Typer(name="fastapi_template_v2 API")
+cli = typer.Typer(name="backend API")
 
 
 @cli.command()
-def run(
+def start(
     port: int = settings.server.port,
     host: str = settings.server.host,
     log_level: str = settings.server.log_level,
@@ -20,7 +20,7 @@ def run(
 ):  # pragma: no cover
     """Run the API server."""
     uvicorn.run(
-        "fastapi_template_v2.app:app",
+        "backend.app:app",
         host=host,
         port=port,
         log_level=log_level,

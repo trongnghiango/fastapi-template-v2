@@ -1,4 +1,4 @@
-"""Python setup.py for fastapi_template_v2 package"""
+"""Python setup.py for backend package"""
 import io
 import os
 from setuptools import find_packages, setup
@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
-    >>> read("fastapi_template_v2", "VERSION")
+    >>> read("backend", "VERSION")
     '0.1.0'
     >>> read("README.md")
     ...
@@ -30,17 +30,15 @@ def read_requirements(path):
 
 
 setup(
-    name="fastapi_template_v2",
-    version=read("fastapi_template_v2", "VERSION"),
-    description="Awesome fastapi_template_v2 created by trongnghiango",
+    name="backend",
+    version=read("backend", "VERSION"),
+    description="Awesome backend created by trongnghiango",
     url="https://github.com/trongnghiango/fastapi-template-v2/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="trongnghiango",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
-    entry_points={
-        "console_scripts": ["fastapi_template_v2 = fastapi_template_v2.__main__:main"]
-    },
+    entry_points={"console_scripts": ["backend = backend.__main__:main"]},
     extras_require={"test": read_requirements("requirements-test.txt")},
 )

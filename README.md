@@ -1,26 +1,25 @@
 # FastAPI Project Template
 
-The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands. 
+The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands.
 
 See also
 
--  [Python-Project-Template](https://github.com/rochacbruno/python-project-template/) for a lean, low dependency Python app.
--  [Flask-Project-Template](https://github.com/rochacbruno/flask-project-template/) for a full feature Flask project including database, API, admin interface, etc.
-
+- [Python-Project-Template](https://github.com/rochacbruno/python-project-template/) for a lean, low dependency Python app.
+- [Flask-Project-Template](https://github.com/rochacbruno/flask-project-template/) for a full feature Flask project including database, API, admin interface, etc.
 
 ### HOW TO USE THIS TEMPLATE
 
 > **DO NOT FORK** this is meant to be used from **[Use this template](https://github.com/rochacbruno/fastapi-project-template/generate)** feature.
 
 1. Click on **[Use this template](https://github.com/rochacbruno/fastapi-project-template/generate)**
-3. Give a name to your project  
+2. Give a name to your project  
    (e.g. `my_awesome_project` recommendation is to use all lowercase and underscores separation for repo names.)
 3. Wait until the first run of CI finishes  
    (Github Actions will process the template and commit to your new repo)
 4. If you want [codecov](https://about.codecov.io/sign-up/) Reports and Automatic Release to [PyPI](https://pypi.org)  
-  On the new repository `settings->secrets` add your `PIPY_API_TOKEN` and `CODECOV_TOKEN` (get the tokens on respective websites)
-4. Read the file [CONTRIBUTING.md](CONTRIBUTING.md)
-5. Then clone your new project and happy coding!
+   On the new repository `settings->secrets` add your `PIPY_API_TOKEN` and `CODECOV_TOKEN` (get the tokens on respective websites)
+5. Read the file [CONTRIBUTING.md](CONTRIBUTING.md)
+6. Then clone your new project and happy coding!
 
 > **NOTE**: **WAIT** until first CI run on github actions before cloning your new project.
 
@@ -38,7 +37,7 @@ See also
 - ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
 - 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
 - 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <fastapi_template_v2>` or `$ fastapi_template_v2` with basic CLI argument parsing.
+- 🎯 Entry points to execute your program using `python -m <backend>` or `$ backend` with basic CLI argument parsing.
 - 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
 
 > Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
@@ -49,51 +48,53 @@ See also
 <!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
 ---
-# fastapi_template_v2
+
+# backend
 
 [![codecov](https://codecov.io/gh/trongnghiango/fastapi-template-v2/branch/main/graph/badge.svg?token=fastapi-template-v2_token_here)](https://codecov.io/gh/trongnghiango/fastapi-template-v2)
 [![CI](https://github.com/trongnghiango/fastapi-template-v2/actions/workflows/main.yml/badge.svg)](https://github.com/trongnghiango/fastapi-template-v2/actions/workflows/main.yml)
 
-Awesome fastapi_template_v2 created by trongnghiango
+Awesome backend created by trongnghiango
 
 ## Install
 
 from source
+
 ```bash
-git clone https://github.com/trongnghiango/fastapi-template-v2 fastapi_template_v2
-cd fastapi_template_v2
+git clone https://github.com/trongnghiango/fastapi-template-v2 backend
+cd backend
 make install
 ```
 
 from pypi
 
 ```bash
-pip install fastapi_template_v2
+pip install backend
 ```
 
 ## Executing
 
 ```bash
-$ fastapi_template_v2 run --port 8080
+$ backend run --port 8080
 ```
 
 or
 
 ```bash
-python -m fastapi_template_v2 run --port 8080
+python -m backend run --port 8080
 ```
 
 or
 
 ```bash
-$ uvicorn fastapi_template_v2:app
+$ uvicorn backend:app
 ```
 
 ## CLI
 
 ```bash
-❯ fastapi_template_v2 --help
-Usage: fastapi_template_v2 [OPTIONS] COMMAND [ARGS]...
+❯ backend --help
+Usage: backend [OPTIONS] COMMAND [ARGS]...
 
 Options:
   --install-completion [bash|zsh|fish|powershell|pwsh]
@@ -112,8 +113,8 @@ Commands:
 ### Creating a user
 
 ```bash
-❯ fastapi_template_v2 create-user --help
-Usage: fastapi_template_v2 create-user [OPTIONS] USERNAME PASSWORD
+❯ backend create-user --help
+Usage: backend create-user [OPTIONS] USERNAME PASSWORD
 
   Create user
 
@@ -123,13 +124,13 @@ Arguments:
 
 Options:
   --superuser / --no-superuser  [default: no-superuser]
-  --help 
+  --help
 ```
 
 **IMPORTANT** To create an admin user on the first run:
 
 ```bash
-fastapi_template_v2 create-user admin admin --superuser
+backend create-user admin admin --superuser
 ```
 
 ### The Shell
@@ -137,7 +138,7 @@ fastapi_template_v2 create-user admin admin --superuser
 You can enter an interactive shell with all the objects imported.
 
 ```bash
-❯ fastapi_template_v2 shell       
+❯ backend shell
 Auto imports: ['app', 'settings', 'User', 'engine', 'cli', 'create_user', 'select', 'session', 'Content']
 
 In [1]: session.query(Content).all()
@@ -151,16 +152,15 @@ Out[3]: [Content(text='string', title='string', created_time='2021-09-14T19:25:0
 
 ## API
 
-Run with `fastapi_template_v2 run` and access http://127.0.0.1:8000/docs
+Run with `backend run` and access http://127.0.0.1:8000/docs
 
 ![](https://raw.githubusercontent.com/rochacbruno/fastapi-project-template/master/docs/api.png)
 
-
-**For some api calls you must authenticate** using the user created with `fastapi_template_v2 create-user`.
+**For some api calls you must authenticate** using the user created with `backend create-user`.
 
 ## Testing
 
-``` bash
+```bash
 ❯ make test
 Black All done! ✨ 🍰 ✨
 13 files would be left unchanged.
@@ -168,12 +168,12 @@ Isort All done! ✨ 🍰 ✨
 6 files would be left unchanged.
 Success: no issues found in 13 source files
 ================================ test session starts ===========================
-platform linux -- Python 3.9.6, pytest-6.2.5, py-1.10.0, pluggy-1.0.0 -- 
+platform linux -- Python 3.9.6, pytest-6.2.5, py-1.10.0, pluggy-1.0.0 --
 /fastapi-project-template/.venv/bin/python3
 cachedir: .pytest_cache
 rootdir: /fastapi-project-template
 plugins: cov-2.12.1
-collected 10 items                                                                                                                               
+collected 10 items
 
 tests/test_app.py::test_using_testing_db PASSED                           [ 10%]
 tests/test_app.py::test_index PASSED                                      [ 20%]
@@ -189,18 +189,18 @@ tests/test_user_api.py::test_user_create PASSED                           [100%]
 ----------- coverage: platform linux, python 3.9.6-final-0 -----------
 Name                              Stmts   Miss  Cover
 -----------------------------------------------------
-fastapi_template_v2/__init__.py              4      0   100%
-fastapi_template_v2/app.py                  16      1    94%
-fastapi_template_v2/cli.py                  21      0   100%
-fastapi_template_v2/config.py                5      0   100%
-fastapi_template_v2/db.py                   10      0   100%
-fastapi_template_v2/models/__init__.py       0      0   100%
-fastapi_template_v2/models/content.py       47      1    98%
-fastapi_template_v2/routes/__init__.py      11      0   100%
-fastapi_template_v2/routes/content.py       52     25    52%
-fastapi_template_v2/routes/security.py      15      1    93%
-fastapi_template_v2/routes/user.py          52     26    50%
-fastapi_template_v2/security.py            103     12    88%
+backend/__init__.py              4      0   100%
+backend/app.py                  16      1    94%
+backend/cli.py                  21      0   100%
+backend/config.py                5      0   100%
+backend/db.py                   10      0   100%
+backend/models/__init__.py       0      0   100%
+backend/models/content.py       47      1    98%
+backend/routes/__init__.py      11      0   100%
+backend/routes/content.py       52     25    52%
+backend/routes/security.py      15      1    93%
+backend/routes/user.py          52     26    50%
+backend/security.py            103     12    88%
 -----------------------------------------------------
 TOTAL                               336     66    80%
 
@@ -216,13 +216,12 @@ make lint  # checks for linting errors
 make fmt   # formats the code
 ```
 
-
 ## Configuration
 
 This project uses [Dynaconf](https://dynaconf.com) to manage configuration.
 
 ```py
-from fastapi_template_v2.config import settings
+from backend.config import settings
 ```
 
 ## Acessing variables
@@ -251,14 +250,15 @@ dynaconf_merge = true
 echo = true
 ```
 
-> `dynaconf_merge` is a boolean that tells if the settings should be merged with the default settings defined in fastapi_template_v2/default.toml.
+> `dynaconf_merge` is a boolean that tells if the settings should be merged with the default settings defined in backend/default.toml.
 
 ### As environment variables
+
 ```bash
-export fastapi_template_v2_KEY=value
-export fastapi_template_v2_KEY="@int 42"
-export fastapi_template_v2_KEY="@jinja {{ this.db.uri }}"
-export fastapi_template_v2_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
+export backend_KEY=value
+export backend_KEY="@int 42"
+export backend_KEY="@jinja {{ this.db.uri }}"
+export backend_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
 ### Secrets
@@ -272,7 +272,7 @@ can read those variables.
 ### Switching environments
 
 ```bash
-fastapi_template_v2_ENV=production fastapi_template_v2 run
+backend_ENV=production backend run
 ```
 
 Read more on https://dynaconf.com

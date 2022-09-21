@@ -8,20 +8,20 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - fastapi_template_v2_DB__uri=postgresql://postgres:postgres@db:5432/fastapi_template_v2
-      - fastapi_template_v2_DB__connect_args={}
+      - backend_DB__uri=postgresql://postgres:postgres@db:5432/backend
+      - backend_DB__connect_args={}
     volumes:
       - .:/home/app/web
     depends_on:
       - db
   db:
     build: postgres
-    image: fastapi_template_v2_postgres-13-alpine-multi-user
+    image: backend_postgres-13-alpine-multi-user
     volumes:
-      - $HOME/.postgres/fastapi_template_v2_db/data/postgresql:/var/lib/postgresql/data
+      - $HOME/.postgres/backend_db/data/postgresql:/var/lib/postgresql/data
     ports:
       - 5435:5432
     environment:
-      - POSTGRES_DBS=fastapi_template_v2, fastapi_template_v2_test
+      - POSTGRES_DBS=backend, backend_test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

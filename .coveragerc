@@ -1,8 +1,8 @@
 [run]
-source = fastapi_template_v2
+source = backend
 
 [report]
 omit =
     */python?.?/*
     */site-packages/nose/*
-    fastapi_template_v2/__main__.py
+    backend/__main__.py

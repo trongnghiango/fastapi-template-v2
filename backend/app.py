@@ -23,18 +23,18 @@ def read(*paths, **kwargs):
 
 
 description = """
-fastapi_template_v2 API helps you do awesome stuff. 🚀
+backend API helps you do awesome stuff. 🚀
 """
 
 app = FastAPI(
-    title="fastapi_template_v2",
+    title="backend",
     description=description,
     version=read("VERSION"),
-    terms_of_service="http://fastapi_template_v2.com/terms/",
+    terms_of_service="http://backend.com/terms/",
     contact={
         "name": "trongnghiango",
-        "url": "http://fastapi_template_v2.com/contact/",
-        "email": "trongnghiango@fastapi_template_v2.com",
+        "url": "http://backend.com/contact/",
+        "email": "trongnghiango@backend.com",
     },
     license_info={
         "name": "The Unlicense",
